@@ -10,8 +10,8 @@ import (
 
 type Feedback struct {
 	common.GTDEntity
-	Question       string `gorm:"column:fb_question" json:"fb_question"`
-	DefaultAnswers string `gorm:"column:fb_default_answers" json:"fb_default_answers"`
+	Question       string `gorm:"column:fb_question" json:"fbQuestion"`
+	DefaultAnswers string `gorm:"column:fb_default_answers" json:"fbDefaultAnswers"`
 }
 
 func (Feedback) TableName() string {

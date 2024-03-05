@@ -6,14 +6,15 @@ import (
 	"gorm.io/gorm"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 type ClassSkill struct {
 	common.GTDEntity
-	ClassCodeID *uint  `json:"class_code_id"`
-	SkillID     *uint  `json:"skill_id"`
-	StartDate   string `json:"start_date"`
-	EndDate     string `json:"end_date"`
+	ClassCodeID *uint     `json:"classCodeId" gorm:"class_code_id"`
+	SkillID     *uint     `json:"skillId" gorm:"skill_id"`
+	StartDate   time.Time `json:"startDate" gorm:"start_date"`
+	EndDate     time.Time `json:"endDate" gorm:"end_date"`
 }
 
 func (ClassSkill) TableName() string {

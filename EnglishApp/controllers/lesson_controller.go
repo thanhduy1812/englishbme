@@ -11,10 +11,10 @@ import (
 type Lesson struct {
 	common.GTDEntity
 	SkillID      uint   // Assuming SkillID is a foreign key to another table
-	ShortContent string `gorm:"size:255"`
+	ShortContent string `json:"shortContent" gorm:"short_content"`
 	Content      string `gorm:"type:text"`
-	HTMLContent  string `gorm:"type:text"`
-	Thumbnail    []byte `gorm:"type:longblob"`
+	HTMLContent  string `json:"htmlContent" gorm:"html_content"`
+	Thumbnail    []byte `json:"thumbnail" gorm:"type:longblob"`
 }
 
 func (Lesson) TableName() string {

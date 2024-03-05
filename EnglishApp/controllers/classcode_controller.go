@@ -12,15 +12,15 @@ type ClassCode struct {
 	common.GTDEntity
 	Name        string `gorm:"type:varchar(255)" json:"name"`
 	Code        string `gorm:"type:varchar(255)" json:"code"`
-	RoomID      *uint  `json:"room_id"`
+	RoomID      *uint  `json:"roomId" gorm:"room_id"`
 	Capacity    int    `json:"capacity"`
 	Type        string `gorm:"type:varchar(255)" json:"type"`
 	Status      string `gorm:"type:varchar(255)" json:"status"`
-	TotalLesson *uint  `json:"total_lesson"`
+	TotalLesson *uint  `json:"totalLesson" gorm:"total_lesson"`
 	Color       string `gorm:"type:varchar(255)" json:"color"`
-	CheckerID   *uint  `json:"checker_id"`
-	AssistantID *uint  `json:"assistant_id"`
-	TeacherID   *uint  `json:"teacher_id"`
+	CheckerID   *uint  `json:"checkerId" gorm:"checker_id"`
+	AssistantID *uint  `json:"assistantId" gorm:"assistant_id"`
+	TeacherID   *uint  `json:"teacherId" gorm:"teacher_id"`
 }
 
 func (ClassCode) TableName() string {

@@ -20,6 +20,10 @@ type UserFeedback struct {
 	CatchUpDate     time.Time
 }
 
+func (UserFeedback) TableName() string {
+	return "user_feedback"
+}
+
 // FindAllUserFeedbacks retrieves all user feedbacks from the database.
 func FindAllUserFeedbacks(db *gorm.DB) func(c *gin.Context) {
 	return func(c *gin.Context) {

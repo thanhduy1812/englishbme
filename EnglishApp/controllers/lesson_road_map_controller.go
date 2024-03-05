@@ -6,16 +6,17 @@ import (
 	"gorm.io/gorm"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 type LessonRoadmap struct {
 	common.GTDEntity
-	ClassRoadmapID uint   // Assuming ClassRoadmapID is a foreign key to another table
-	SkillID        uint   // Assuming SkillID is a foreign key to another table
-	LessonID       uint   // Assuming LessonID is a foreign key to another table
-	LessonStatus   string `gorm:"type:varchar(255)"`
-	StartDate      string `gorm:"type:varchar(255)"`
-	EndDate        string `gorm:"type:varchar(255)"`
+	ClassRoadmapID uint      `json:"classRoadmapId" gorm:"class_roadmap_id"`
+	SkillID        uint      `json:"skillId" gorm:"skill_id"`
+	LessonID       uint      `json:"lessonId" gorm:"lesson_id"`
+	LessonStatus   string    `json:"lessonStatus" gorm:"lesson_status"`
+	StartDate      time.Time `json:"startDate" gorm:"start_date"`
+	EndDate        time.Time `json:"endDate" gorm:"end_date"`
 }
 
 func (LessonRoadmap) TableName() string {

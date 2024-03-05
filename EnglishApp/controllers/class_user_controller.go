@@ -11,11 +11,15 @@ import (
 
 type ClassUser struct {
 	common.GTDEntity
-	ClassCodeID uint
-	UserID      uint
-	StartDate   time.Time
-	EndDate     time.Time
-	CancelDate  time.Time
+	ClassCodeID uint      `json:"classCodeId" gorm:"class_code_id"`
+	UserID      uint      `json:"userId" gorm:"user_id"`
+	StartDate   time.Time `json:"startDate" gorm:"start_date"`
+	EndDate     time.Time `json:"endDate" gorm:"end_date"`
+	CancelDate  time.Time `json:"cancelDate" gorm:"cancel_date"`
+}
+
+func (ClassUser) TableName() string {
+	return "class_user"
 }
 
 // FindAllClassUsers retrieves all class users from the database.

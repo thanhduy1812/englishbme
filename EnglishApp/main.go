@@ -42,7 +42,7 @@ func configGin(db *gorm.DB) {
 			users.POST("/create", controllers.CreateUser(db))
 		}
 
-		lessons := v1.Group("/lessons")
+		lessons := v1.Group("/lesson")
 		{
 			lessons.GET("", controllers.FindAllLessons(db))
 			lessons.POST("/create", controllers.CreateLesson(db))
@@ -72,10 +72,22 @@ func configGin(db *gorm.DB) {
 			classSkills.POST("/create", controllers.CreateClassSkill(db))
 		}
 
+		classUsers := v1.Group("/class-users")
+		{
+			classUsers.GET("", controllers.FindAllClassUsers(db))
+			classUsers.POST("/create", controllers.CreateClassUser(db))
+		}
+
 		userFeedbacks := v1.Group("/user-feedback")
 		{
 			userFeedbacks.GET("", controllers.FindAllUserFeedbacks(db))
 			userFeedbacks.POST("/create", controllers.CreateUserFeedback(db))
+		}
+
+		lessonRoadmaps := v1.Group("/lesson-roadmap")
+		{
+			lessonRoadmaps.GET("", controllers.FindAllLessonRoadmaps(db))
+			lessonRoadmaps.POST("/create", controllers.CreateLessonRoadmap(db))
 		}
 	}
 	r.Run(":3000") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
