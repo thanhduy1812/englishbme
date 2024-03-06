@@ -11,15 +11,38 @@ import (
 	"os"
 )
 
+var (
+	ServiceName = "english-app"
+	port        = "8080"
+)
+
 func main() {
-	dsn := os.Getenv("DB_CONN_STR")
+
+	//dsn := os.Getenv("DB_CONN_STR_SV")
+	dsn := "root:123456@tcp(mysql:3306)/english_uat?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatalln(err)
 	}
 	fmt.Println(db)
-	fmt.Println("Hello")
 	configGin(db)
+
+	//http.HandleFunc("/ping", func(w http.ResponseWriter, req *http.Request) {
+	//	_, err := w.Write([]byte(fmt.Sprintf("ping ok %s", ServiceName)))
+	//	if err != nil {
+	//		return
+	//	}
+	//})
+	fmt.Println("start service with name: ", ServiceName)
+	fmt.Println("start service with port: ", port)
+	//log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
+	// Iterate over the network interfaces
+	hostIP := os.Getenv("HOST_IP")
+	if hostIP == "" {
+		log.Fatal("HOST_IP environment variable not set")
+	}
+
+	log.Printf("Host IP: %s", hostIP)
 }
 
 func configGin(db *gorm.DB) {
@@ -90,5 +113,5 @@ func configGin(db *gorm.DB) {
 			lessonRoadmaps.POST("/create", controllers.CreateLessonRoadmap(db))
 		}
 	}
-	r.Run(":3000") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	r.Run(":8080") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
