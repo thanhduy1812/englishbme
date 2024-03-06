@@ -9,7 +9,7 @@ services:
     depends_on:
       - app
   mysql:
-    image: mysql:latest
+    image: mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
