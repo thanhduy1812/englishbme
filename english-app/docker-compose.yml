@@ -30,7 +30,7 @@ services:
     depends_on:
       - mysql
     environment:
-      DB_HOST: host.docker.internal
+      DB_HOST: 103.161.173.59
       DB_PORT: 3308
       DB_USER: root
       DB_PASSWORD: 123456

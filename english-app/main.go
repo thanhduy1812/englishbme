@@ -19,7 +19,7 @@ var (
 func main() {
 
 	//dsn := os.Getenv("DB_CONN_STR_SV")
-	dsn := "root:123456@tcp(host.docker.internal:3308)/english_uat?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:123456@tcp(103.161.173.59:3308)/english_uat?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatalln(err)
