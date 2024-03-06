@@ -9,7 +9,7 @@ services:
     depends_on:
       - app
   mysql:
-    image: mysql
+    image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
@@ -18,7 +18,7 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: 123456
     ports:
-      - '3307:3306'
+      - '3308:3306'
     volumes:
       - mysql-data:/var/lib/mysql
 
@@ -30,8 +30,8 @@ services:
     depends_on:
       - mysql
     environment:
-      DB_HOST: 103.161.173.59
-      DB_PORT: 3307
+      DB_HOST: host.docker.internal
+      DB_PORT: 3308
       DB_USER: root
       DB_PASSWORD: 123456
       DB_NAME: english_uat
