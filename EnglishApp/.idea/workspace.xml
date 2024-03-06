@@ -5,32 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b12fe08c-ab3c-4eac-9ec7-5267ba572c1c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../english-app/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../english-app/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../english-app/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../english-app/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/EnglishApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/.idea/english-app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/app_entity.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/common/app_entity.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/app_response.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/common/app_response.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/paging.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/common/paging.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/bme_course_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/controllers/bme_course_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/bme_student_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/controllers/bme_student_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/class_skill_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/controllers/class_skill_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/class_user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/controllers/class_user_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/classcode_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/controllers/classcode_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/feedback_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/controllers/feedback_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/lesson_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/controllers/lesson_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/lesson_road_map_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/controllers/lesson_road_map_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/skill_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/controllers/skill_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/controllers/user_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_feed_back.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/controllers/user_feed_back.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/bme_course.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/entity/bme_course.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../english-app/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../english-app/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../english-app/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../english-app/nginx.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,25 +28,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.automatic.dependencies.download&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;uat&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/duynt&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;go.vgo&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Go Build.go build EnglishApp.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "uat",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/duynt",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "go.vgo"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="go build EnglishApp" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="english-app" />
+      <working_directory value="$PROJECT_DIR$/../english-app" />
+      <kind value="PACKAGE" />
+      <package value="EnglishApp" />
+      <directory value="$PROJECT_DIR$/../english-app" />
+      <filePath value="$PROJECT_DIR$/../english-app/main.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build EnglishApp" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
