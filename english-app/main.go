@@ -56,7 +56,9 @@ func configGin(db *gorm.DB) {
 	{
 		bmeStudents := v1.Group("/bme")
 		{
-			bmeStudents.GET("/courses", controllers.GetAllBmeStudents(db))
+			bmeStudents.GET("/courses", controllers.GetAllBmeCourse(db))
+			bmeStudents.GET("/courses/find-by-key", controllers.FindBmeCourseByKey(db))
+			bmeStudents.GET("/students", controllers.GetAllBmeStudents(db))
 		}
 
 		users := v1.Group("/users")
