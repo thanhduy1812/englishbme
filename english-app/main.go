@@ -70,6 +70,8 @@ func configGin(db *gorm.DB) {
 			users.GET("", controllers.FindAllUsers(db))
 			users.POST("/create/users", controllers.CreateUsers(db))
 			users.POST("/create", controllers.CreateUser(db))
+			users.GET("/find-by-key", controllers.FindUserByKey(db))
+			users.GET("/search-by-column", controllers.SearchUserByColumn(db))
 		}
 
 		lessons := v1.Group("/lesson")
