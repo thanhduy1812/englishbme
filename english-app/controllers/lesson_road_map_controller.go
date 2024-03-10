@@ -11,12 +11,12 @@ import (
 
 type LessonRoadmap struct {
 	common.GTDEntity
-	ClassRoadmapID uint      `json:"classRoadmapId" gorm:"class_roadmap_id"`
-	SkillID        uint      `json:"skillId" gorm:"skill_id"`
-	LessonID       uint      `json:"lessonId" gorm:"lesson_id"`
-	LessonStatus   string    `json:"lessonStatus" gorm:"lesson_status"`
-	StartDate      time.Time `json:"startDate" gorm:"start_date"`
-	EndDate        time.Time `json:"endDate" gorm:"end_date"`
+	ClassCode    string     `json:"classCode" gorm:"class_code"`
+	SkillCode    string     `json:"skillCode" gorm:"skill_code"`
+	LessonName   string     `json:"lessonName" gorm:"lesson_name"`
+	LessonStatus *string    `json:"lessonStatus" gorm:"lesson_status"`
+	StartDate    *time.Time `json:"startDate" gorm:"start_date"`
+	EndDate      *time.Time `json:"endDate" gorm:"end_date"`
 }
 
 func (LessonRoadmap) TableName() string {
