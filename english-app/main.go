@@ -119,6 +119,7 @@ func configGin(db *gorm.DB) {
 		lessonRoadmaps := v1.Group("/lesson-roadmap")
 		{
 			lessonRoadmaps.GET("", controllers.FindAllLessonRoadmaps(db))
+			lessonRoadmaps.GET("/find-by-key", controllers.FindLessonRoadMapByKey(db))
 			lessonRoadmaps.POST("/create", controllers.CreateLessonRoadmap(db))
 		}
 	}

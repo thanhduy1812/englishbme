@@ -131,3 +131,25 @@ func FindLessonRoadmapByID(db *gorm.DB) func(c *gin.Context) {
 		c.JSON(http.StatusOK, &response)
 	}
 }
+
+// FindLessonRoadMapByKey retrieves a lesson roadmap by ID from the database.
+func FindLessonRoadMapByKey(db *gorm.DB) func(ctx *gin.Context) {
+	return func(ctx *gin.Context) {
+		filters := make(map[string]interface{})
+		for key, values := range ctx.Request.URL.Query() {
+			// Assume there is only one value for each key
+			filters[key] = values[0]
+		}
+
+		var finalResult []LessonRoadmap
+		result := db.Where(filters).Find(&finalResult)
+		if result.Error != nil {
+			ctx.JSON(http.StatusInternalServerError, common.GTDError{
+				Code:    strconv.Itoa(http.StatusInternalServerError),
+				Message: result.Error.Error(),
+			})
+			return
+		}
+		ctx.JSON(http.StatusOK, finalResult)
+	}
+}
