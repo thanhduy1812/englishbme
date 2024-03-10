@@ -90,6 +90,26 @@ func FindBmeCourseByKey(db *gorm.DB) func(ctx *gin.Context) {
 	}
 }
 
+// SearchBmeCourseByColumn is a handler function to find a specific BME class code by key
+func SearchBmeCourseByColumn(db *gorm.DB) func(ctx *gin.Context) {
+	return func(ctx *gin.Context) {
+		// Get the column and substring from the query parameters
+		column := ctx.Query("column")
+		substring := ctx.Query("substring")
+
+		var classCodes []BmeCourse
+		result := db.Where(column+" LIKE ?", "%"+substring+"%").Find(&classCodes)
+		if result.Error != nil {
+			ctx.JSON(http.StatusInternalServerError, common.GTDError{
+				Code:    strconv.Itoa(http.StatusInternalServerError),
+				Message: result.Error.Error(),
+			})
+			return
+		}
+		ctx.JSON(http.StatusOK, classCodes)
+	}
+}
+
 // CreateBmeCourse is a handler function to create a new BME class code
 func CreateBmeCourse(db *gorm.DB) func(ctx *gin.Context) {
 	return func(ctx *gin.Context) {

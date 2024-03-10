@@ -5,11 +5,12 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 	"net/http"
+	"strconv"
 )
 
 type BMeStudentEntity struct {
 	ID          int64  `json:"id"  gorm:"id"`
-	Status      string `json:"status"  gorm:"status"`
+	ClassCode   string `json:"class_code"  gorm:"class_code"`
 	TenFacebook string `json:"ten_facebook"  gorm:"ten_facebook"`
 	HoVaTen     string `json:"ho_va_ten"  gorm:"ho_va_ten"`
 	NgaySinh    string `json:"ngay_sinh"  gorm:"ngay_sinh"`
@@ -28,15 +29,6 @@ func GetAllBmeStudents(db *gorm.DB) func(ctx *gin.Context) {
 	return func(c *gin.Context) {
 		var result []BMeStudentEntity
 		var response common.GTDResponse
-		//if err := c.ShouldBind(&data); err != nil {
-		//	c.JSON(http.StatusBadRequest, gin.H{
-		//		"error": common.GTDError{
-		//			Code:    "400",
-		//			Message: err.Error(),
-		//		},
-		//	})
-		//	return
-		//}
 
 		if err := db.Find(&result).Error; err != nil {
 			gtdErr := common.GTDError{
@@ -51,5 +43,47 @@ func GetAllBmeStudents(db *gorm.DB) func(ctx *gin.Context) {
 		response.Data = result
 
 		c.JSON(http.StatusOK, response)
+	}
+}
+
+// FindBmeStudentByKey is a handler function to find a specific BME class code by key
+func FindBmeStudentByKey(db *gorm.DB) func(ctx *gin.Context) {
+	return func(ctx *gin.Context) {
+		filters := make(map[string]interface{})
+		for key, values := range ctx.Request.URL.Query() {
+			// Assume there is only one value for each key
+			filters[key] = values[0]
+		}
+
+		var finalResult []BMeStudentEntity
+		result := db.Where(filters).Find(&finalResult)
+		if result.Error != nil {
+			ctx.JSON(http.StatusInternalServerError, common.GTDError{
+				Code:    strconv.Itoa(http.StatusInternalServerError),
+				Message: result.Error.Error(),
+			})
+			return
+		}
+		ctx.JSON(http.StatusOK, finalResult)
+	}
+}
+
+// SearchBmeStudentByColumn is a handler function to find a specific BME class code by key
+func SearchBmeStudentByColumn(db *gorm.DB) func(ctx *gin.Context) {
+	return func(ctx *gin.Context) {
+		// Get the column and substring from the query parameters
+		column := ctx.Query("column")
+		substring := ctx.Query("substring")
+
+		var finalResult []BMeStudentEntity
+		result := db.Where(column+" LIKE ?", "%"+substring+"%").Find(&finalResult)
+		if result.Error != nil {
+			ctx.JSON(http.StatusInternalServerError, common.GTDError{
+				Code:    strconv.Itoa(http.StatusInternalServerError),
+				Message: result.Error.Error(),
+			})
+			return
+		}
+		ctx.JSON(http.StatusOK, finalResult)
 	}
 }
