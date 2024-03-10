@@ -12,28 +12,28 @@ import (
 // User entity struct
 type User struct {
 	common.GTDEntity
-	FullName    string    `json:"fullName" gorm:"full_name"`
-	SocialName  string    `json:"socialName" gorm:"social_name"`
-	DOB         time.Time `json:"dob" gorm:"dob"`
-	Avatar      string    `json:"avatar" gorm:"avatar"`
-	Username    string    `json:"username" gorm:"username"`
-	Password    string    `json:"password" gorm:"password"`
-	Role        string    `json:"role" gorm:"role"`
-	Email       string    `json:"email" gorm:"email"`
-	PhoneNumber string    `json:"phoneNumber" gorm:"phone_number"`
-	Address     string    `json:"address" gorm:"address"`
-	Tag         string    `json:"tag" gorm:"tag"`
+	FullName    string     `json:"fullName" gorm:"full_name"`
+	SocialName  string     `json:"socialName" gorm:"social_name"`
+	DOB         *time.Time `json:"dob" gorm:"dob"`
+	Avatar      string     `json:"avatar" gorm:"avatar"`
+	Username    string     `json:"username" gorm:"username"`
+	Password    string     `json:"password" gorm:"password"`
+	Role        string     `json:"role" gorm:"role"`
+	Email       string     `json:"email" gorm:"email"`
+	PhoneNumber string     `json:"phoneNumber" gorm:"phone_number"`
+	Address     string     `json:"address" gorm:"address"`
+	Tag         string     `json:"tag" gorm:"tag"`
 }
 
 type UserCreation struct {
-	FullName    string    `json:"fullName" gorm:"full_name"`
-	SocialName  string    `json:"socialName" gorm:"social_name"`
-	DOB         time.Time `json:"dob" gorm:"dob"`
-	Username    string    `json:"username" gorm:"username"`
-	Role        string    `json:"role" gorm:"role"` //admin | mentor | user
-	Email       string    `json:"email" gorm:"email"`
-	PhoneNumber string    `json:"phoneNumber" gorm:"phone_number"`
-	Address     string    `json:"address" gorm:"address"`
+	FullName    string     `json:"fullName" gorm:"full_name"`
+	SocialName  string     `json:"socialName" gorm:"social_name"`
+	DOB         *time.Time `json:"dob" gorm:"dob"`
+	Username    string     `json:"username" gorm:"username"`
+	Role        *string    `json:"role" gorm:"role"` //admin | mentor | user
+	Email       string     `json:"email" gorm:"email"`
+	PhoneNumber string     `json:"phoneNumber" gorm:"phone_number"`
+	Address     string     `json:"address" gorm:"address"`
 }
 
 func (User) TableName() string {
@@ -60,13 +60,21 @@ func CreateUser(db *gorm.DB) func(c *gin.Context) {
 			return
 		}
 
+		role := "USER"
+		if userCreation.Role != nil {
+			role = *userCreation.Role
+		}
+		userName := userCreation.PhoneNumber
+		if role == "ADMIN" && userCreation.Username != "" {
+			userName = userCreation.Username
+		}
 		user := User{
 			FullName:    userCreation.FullName,
 			SocialName:  userCreation.SocialName,
 			DOB:         userCreation.DOB,
-			Username:    userCreation.PhoneNumber,
+			Username:    userName,
 			Password:    "123456",
-			Role:        userCreation.Role,
+			Role:        role,
 			Email:       userCreation.Email,
 			PhoneNumber: userCreation.PhoneNumber,
 			Address:     userCreation.Address,
@@ -84,7 +92,60 @@ func CreateUser(db *gorm.DB) func(c *gin.Context) {
 		response.Data = user
 		c.JSON(http.StatusOK, &response)
 	}
+}
 
+func CreateUsers(db *gorm.DB) func(c *gin.Context) {
+	return func(c *gin.Context) {
+		var userCreations []UserCreation
+		var users []User
+		var response common.GTDResponse
+
+		// Bind the user data from the request body
+		err := c.ShouldBindJSON(&userCreations)
+		if err != nil {
+			gtdErr := &common.GTDError{
+				Code:    strconv.Itoa(http.StatusBadRequest),
+				Message: err.Error(),
+			}
+			c.JSON(http.StatusBadRequest, &gtdErr)
+			return
+		}
+
+		for _, userCreation := range userCreations {
+			role := "USER"
+			if userCreation.Role != nil {
+				role = *userCreation.Role
+			}
+			userName := userCreation.PhoneNumber
+			if role == "ADMIN" && userCreation.Username != "" {
+				userName = userCreation.Username
+			}
+			user := User{
+				FullName:    userCreation.FullName,
+				SocialName:  userCreation.SocialName,
+				DOB:         userCreation.DOB,
+				Username:    userName,
+				Password:    "123456",
+				Role:        role,
+				Email:       userCreation.Email,
+				PhoneNumber: userCreation.PhoneNumber,
+				Address:     userCreation.Address,
+			}
+			users = append(users, user)
+		}
+
+		if err := db.Create(&users).Error; err != nil {
+			gtdErr := &common.GTDError{
+				Code:    strconv.Itoa(http.StatusBadRequest),
+				Message: err.Error(),
+			}
+			c.JSON(http.StatusBadRequest, &gtdErr)
+			return
+		}
+
+		response.Data = users
+		c.JSON(http.StatusOK, &response)
+	}
 }
 
 // FindUserByID Find user by ID

@@ -62,6 +62,7 @@ func configGin(db *gorm.DB) {
 		users := v1.Group("/users")
 		{
 			users.GET("", controllers.FindAllUsers(db))
+			users.POST("/create/users", controllers.CreateUsers(db))
 			users.POST("/create", controllers.CreateUser(db))
 		}
 
