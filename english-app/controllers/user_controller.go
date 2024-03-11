@@ -6,34 +6,33 @@ import (
 	"gorm.io/gorm"
 	"net/http"
 	"strconv"
-	"time"
 )
 
 // User entity struct
 type User struct {
 	common.GTDEntity
-	FullName    string     `json:"fullName" gorm:"full_name"`
-	SocialName  string     `json:"socialName" gorm:"social_name"`
-	DOB         *time.Time `json:"dob" gorm:"dob"`
-	Avatar      string     `json:"avatar" gorm:"avatar"`
-	Username    string     `json:"username" gorm:"username"`
-	Password    string     `json:"password" gorm:"password"`
-	Role        string     `json:"role" gorm:"role"`
-	Email       string     `json:"email" gorm:"email"`
-	PhoneNumber string     `json:"phoneNumber" gorm:"phone_number"`
-	Address     string     `json:"address" gorm:"address"`
-	Tag         string     `json:"tag" gorm:"tag"`
+	FullName    string `json:"fullName" gorm:"full_name"`
+	SocialName  string `json:"socialName" gorm:"social_name"`
+	DOB         string `json:"dob" gorm:"dob"`
+	Avatar      string `json:"avatar" gorm:"avatar"`
+	Username    string `json:"username" gorm:"username"`
+	Password    string `json:"password" gorm:"password"`
+	Role        string `json:"role" gorm:"role"`
+	Email       string `json:"email" gorm:"email"`
+	PhoneNumber string `json:"phoneNumber" gorm:"phone_number"`
+	Address     string `json:"address" gorm:"address"`
+	Tag         string `json:"tag" gorm:"tag"`
 }
 
 type UserCreation struct {
-	FullName    string     `json:"fullName" gorm:"full_name"`
-	SocialName  string     `json:"socialName" gorm:"social_name"`
-	DOB         *time.Time `json:"dob" gorm:"dob"`
-	Username    string     `json:"username" gorm:"username"`
-	Role        *string    `json:"role" gorm:"role"` //admin | mentor | user
-	Email       string     `json:"email" gorm:"email"`
-	PhoneNumber string     `json:"phoneNumber" gorm:"phone_number"`
-	Address     string     `json:"address" gorm:"address"`
+	FullName    string  `json:"fullName" gorm:"full_name"`
+	SocialName  string  `json:"socialName" gorm:"social_name"`
+	DOB         string  `json:"dob" gorm:"dob"`
+	Username    string  `json:"username" gorm:"username"`
+	Role        *string `json:"role" gorm:"role"` //admin | mentor | user
+	Email       string  `json:"email" gorm:"email"`
+	PhoneNumber string  `json:"phoneNumber" gorm:"phone_number"`
+	Address     string  `json:"address" gorm:"address"`
 }
 
 func (User) TableName() string {

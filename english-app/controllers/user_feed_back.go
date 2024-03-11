@@ -11,13 +11,13 @@ import (
 
 type UserFeedback struct {
 	common.GTDEntity
-	UserID          uint
+	UserName        string `json:"user_name" gorm:"user_name"`
 	LessonRoadmapID uint
 	CancelDate      time.Time
 	FeedbackID      uint
 	FeedbackAnswer  string
-	FeedbackDate    time.Time
-	CatchUpDate     time.Time
+	FeedbackDate    time.Time `json:"feedback_date" gorm:"feedback_date"`
+	CatchUpDate     time.Time `json:"catch_up_date" gorm:"catch_up_date"`
 }
 
 func (UserFeedback) TableName() string {
