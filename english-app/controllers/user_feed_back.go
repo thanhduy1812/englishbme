@@ -11,13 +11,13 @@ import (
 
 type UserFeedback struct {
 	common.GTDEntity
-	UserName        string `json:"user_name" gorm:"user_name"`
-	LessonRoadmapID uint
-	CancelDate      time.Time
-	FeedbackID      uint
-	FeedbackAnswer  string
-	FeedbackDate    time.Time `json:"feedback_date" gorm:"feedback_date"`
-	CatchUpDate     time.Time `json:"catch_up_date" gorm:"catch_up_date"`
+	UserName        string     `json:"userName" gorm:"user_name"`
+	LessonRoadmapID uint       `json:"lessonRoadmapId" gorm:"lesson_roadmap_id"`
+	CancelDate      *time.Time `json:"cancelDate" gorm:"cancel_date"`
+	FeedbackID      uint       `json:"feedbackId" gorm:"feedback_id"`
+	FeedbackAnswer  string     `json:"feedbackAnswer" gorm:"feedback_answer"`
+	FeedbackDate    *time.Time `json:"feedbackDate" gorm:"feedback_date"`
+	CatchUpDate     *time.Time `json:"catchUpDate" gorm:"catch_up_date"`
 }
 
 func (UserFeedback) TableName() string {
