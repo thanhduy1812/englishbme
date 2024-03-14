@@ -59,6 +59,8 @@ func configGin(db *gorm.DB) {
 			bmeStudents.GET("/courses", controllers.GetAllBmeCourse(db))
 			bmeStudents.GET("/courses/find-by-key", controllers.FindBmeCourseByKey(db))
 			bmeStudents.GET("/courses/search-by-column", controllers.SearchBmeCourseByColumn(db))
+			bmeStudents.PUT("/update/:id", controllers.UpdateBmeCourse(db))
+			bmeStudents.POST("/create", controllers.CreateBmeCourse(db))
 
 			bmeStudents.GET("/students", controllers.GetAllBmeStudents(db))
 			bmeStudents.GET("/students/find-by-key", controllers.FindBmeStudentByKey(db))
@@ -72,6 +74,7 @@ func configGin(db *gorm.DB) {
 			users.POST("/create", controllers.CreateUser(db))
 			users.GET("/find-by-key", controllers.FindUserByKey(db))
 			users.GET("/search-by-column", controllers.SearchUserByColumn(db))
+			users.PUT("/update/:id", controllers.UpdateUser(db))
 		}
 
 		lessons := v1.Group("/lesson")
@@ -114,6 +117,7 @@ func configGin(db *gorm.DB) {
 		{
 			userFeedbacks.GET("", controllers.FindAllUserFeedbacks(db))
 			userFeedbacks.POST("/create", controllers.CreateUserFeedback(db))
+			userFeedbacks.GET("/find-by-key", controllers.FindUserFeedbackByKey(db))
 		}
 
 		lessonRoadmaps := v1.Group("/lesson-roadmap")
