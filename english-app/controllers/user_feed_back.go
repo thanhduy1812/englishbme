@@ -175,3 +175,24 @@ func FindUserFeedbackByKey(db *gorm.DB) func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, finalResult)
 	}
 }
+
+// FindUserFeedbackByLessonRoadmapIds is a handler function to find a specific BME class code by key
+func FindUserFeedbackByLessonRoadmapIds(db *gorm.DB) func(ctx *gin.Context) {
+	return func(ctx *gin.Context) {
+		var lessonIds []uint
+		if err := ctx.ShouldBindJSON(&lessonIds); err != nil {
+			ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		var finalResult []UserFeedback
+		result := db.Where("lesson_roadmap_id IN (?)", lessonIds).Find(&finalResult)
+		if result.Error != nil {
+			ctx.JSON(http.StatusInternalServerError, common.GTDError{
+				Code:    strconv.Itoa(http.StatusInternalServerError),
+				Message: result.Error.Error(),
+			})
+			return
+		}
+		ctx.JSON(http.StatusOK, finalResult)
+	}
+}

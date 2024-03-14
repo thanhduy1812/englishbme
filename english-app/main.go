@@ -118,6 +118,7 @@ func configGin(db *gorm.DB) {
 			userFeedbacks.GET("", controllers.FindAllUserFeedbacks(db))
 			userFeedbacks.POST("/create", controllers.CreateUserFeedback(db))
 			userFeedbacks.GET("/find-by-key", controllers.FindUserFeedbackByKey(db))
+			userFeedbacks.POST("/find-by-lessons", controllers.FindUserFeedbackByLessonRoadmapIds(db))
 		}
 
 		lessonRoadmaps := v1.Group("/lesson-roadmap")
