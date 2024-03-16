@@ -59,8 +59,9 @@ func configGin(db *gorm.DB) {
 			bmeStudents.GET("/courses", controllers.GetAllBmeCourse(db))
 			bmeStudents.GET("/courses/find-by-key", controllers.FindBmeCourseByKey(db))
 			bmeStudents.GET("/courses/search-by-column", controllers.SearchBmeCourseByColumn(db))
-			bmeStudents.PUT("/update/:id", controllers.UpdateBmeCourse(db))
-			bmeStudents.POST("/create", controllers.CreateBmeCourse(db))
+			bmeStudents.PUT("/courses/update/:id", controllers.UpdateBmeCourse(db))
+			bmeStudents.POST("/courses/create", controllers.CreateBmeCourse(db))
+			bmeStudents.DELETE("/courses/:id", controllers.DeleteBmeCourse(db))
 
 			bmeStudents.GET("/students", controllers.GetAllBmeStudents(db))
 			bmeStudents.GET("/students/find-by-key", controllers.FindBmeStudentByKey(db))
