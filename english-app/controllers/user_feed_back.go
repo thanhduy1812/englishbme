@@ -13,6 +13,7 @@ type UserFeedback struct {
 	common.GTDEntity
 	UserName        string     `json:"userName" gorm:"user_name"`
 	LessonRoadmapID uint       `json:"lessonRoadmapId" gorm:"lesson_roadmap_id"`
+	FeedbackTo      string     `json:"feedbackTo" gorm:"feedback_to"`
 	CancelDate      *time.Time `json:"cancelDate" gorm:"cancel_date"`
 	FeedbackID      uint       `json:"feedbackId" gorm:"feedback_id"`
 	FeedbackAnswer  string     `json:"feedbackAnswer" gorm:"feedback_answer"`
