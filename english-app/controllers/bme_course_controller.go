@@ -28,6 +28,7 @@ type BmeCourse struct {
 	Mau             string `json:"mau" gorm:"column:mau"`
 	Note            string `json:"note" gorm:"column:note"`
 	Content         string `json:"content" gorm:"column:content"`
+	MaGV            string `json:"maGV" gorm:"column:ma_gv"`
 }
 
 func (BmeCourse) TableName() string {
