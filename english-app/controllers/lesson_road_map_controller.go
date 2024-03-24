@@ -14,6 +14,8 @@ type LessonRoadmap struct {
 	ClassCode    string     `json:"classCode" gorm:"class_code"`
 	SkillCode    string     `json:"skillCode" gorm:"skill_code"`
 	LessonName   string     `json:"lessonName" gorm:"lesson_name"`
+	MentorName   string     `json:"mentorName" gorm:"mentor_name"`
+	MentorId     string     `json:"mentorId" gorm:"mentor_id"`
 	LessonStatus *string    `json:"lessonStatus" gorm:"lesson_status"`
 	StartDate    *time.Time `json:"startDate" gorm:"start_date"`
 	EndDate      *time.Time `json:"endDate" gorm:"end_date"`
